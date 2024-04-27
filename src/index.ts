@@ -1,18 +1,15 @@
-import { Hono } from 'hono'
+import { Hono } from 'hono';
+import { usdtRoutes} from './routes/usdt';
 
-const app = new Hono()
+const app = new Hono();
 
 app.get('/', (c) => {
-  return c.text('Hello Hono!')
-})
+  return c.text('Hello Hono!');
+});
 
-//  /getUSDTEvents    listen USDT transfer events 
+// Use usdtRoutes as middleware
+app.route('/usdt', usdtRoutes); // Use `route` instead of `use` if usdtRoutes is a Hono instance
+
+export default app;
 
 
-//  /sendPush     Send push notification when trading USDT value exceeds 1k
-
-//  /getUSDTIndex    Index USDT transfer history
-
-//  /sendLink      Send a link token to people whose USDT trade exceeds 500
-
-export default app
