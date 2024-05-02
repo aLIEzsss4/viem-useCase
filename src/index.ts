@@ -23,7 +23,7 @@ app.get('/start-listening', async (c) => {
       onLogs: (logs) => {
         logs.forEach(log => {
           const transferValue = parseTransferValue(log.data); 
-          if (transferValue > 1) {
+          if (transferValue > 1000) {
             sendPushNotification(); // Send a mock push notification
           }
         });
@@ -44,7 +44,7 @@ function parseTransferValue(data) {
 
 
 async function sendPushNotification() {
-  console.log("amount exceeds 100000 USDT, sending push notification...");
+  console.log("amount exceeds 10000 USDT, sending push notification...");
 }
 
 
@@ -67,7 +67,7 @@ app.get('/getUSDTIndex', async (c) => {
               value: transferValue
             });
             newTransaction.save();
-            if (transferValue > 1) {
+            if (transferValue > 1000) {
               sendPushNotification();
             }
             else {
