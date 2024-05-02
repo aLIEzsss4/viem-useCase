@@ -5,7 +5,6 @@ import Transaction from './model/dbConfig';
 import { connectDB } from './model/dbConfig';
 import { usdtAbi } from './abi/usdtAbi';
 
-// Load environment variables
 dotenv.config();
 
 const app = new Hono();
